@@ -1,0 +1,619 @@
+﻿
+
+
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>
+
+    </title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+
+    <script src="~/Scripts/jquery-3.1.1.js"></script>
+    <style type="text/css">
+        body {
+            background: rgba(63, 132, 183, 0.89);
+            font-family: arial;
+            font-size: 13px;
+            color: #333;
+        }
+
+        td {
+            padding: 4px 2px;
+        }
+
+            td table {
+                border-left: 1px solid #ccc;
+                border-top: 1px solid #ccc;
+            }
+
+                td table td {
+                    border-bottom: 1px solid #ccc;
+                    border-right: 1px solid #ccc;
+                }
+
+        .container {
+            width: 1050px;
+            background: #fff;
+            height: 1080px;
+        }
+
+        .mainheader {
+            background: #337ab7;
+            color: #fff;
+            font-size: 28px;
+            padding: 10px;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        label {
+            display: inline-block;
+            max-width: 100%;
+            margin-bottom: 5px;
+            font-weight: normal;
+            padding: 0px 5px;
+        }
+
+        h4 {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .mrgnT20 {
+            margin-top: 20px;
+        }
+
+        .mrgnT10 {
+            margin-top: 10px;
+            display: block;
+        }
+
+        .displaynone {
+            display: none;
+        }
+
+        .mandtory:after {
+            color: #f00;
+            content: '*';
+            font-size: 11px;
+        }
+
+        #footer {
+            position: relative;
+            top: 267px;
+            color: #39528F;
+            height: 25px;
+        }
+
+            #footer .footwrp {
+                background: #E1E1E1 none;
+                margin-bottom: 10px;
+                height: 25px;
+            }
+
+            #footer #footer-end {
+                float: left;
+                font-size: 11px !important;
+                padding: 7px 15px;
+            }
+
+        #footercontact {
+            float: right;
+            font-size: 11px;
+            padding: 7px 15px;
+        }
+
+            #footercontact span {
+                color: #39528F;
+                font-weight: bold;
+            }
+
+        .border_styles {
+            margin-top: 32px;
+            border: 1px solid #B0BEE0;
+            padding: 13px;
+            border-radius: 8px;
+        }
+
+        .btn_changes {
+            background: #337ab7;
+            border: none;
+            padding: 5px 20px;
+            border-radius: 5px;
+            position: relative;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .form-coloum-two, .form-coloum-three, .form-coloum-four {
+            display: inline-block;
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .label {
+            color: #000;
+            float: left;
+            font-size: 12px;
+            padding: 2px;
+            width: 185px;
+            font-weight: normal;
+            text-align: left;
+            position: relative;
+            top: 9px;
+        }
+
+            .label:after {
+                color: #f00;
+                content: " *";
+            }
+
+        .input-field input, select {
+            border: 1px solid #B0BEE0;
+            height: 30px;
+            width: 195px;
+            position: relative;
+            left: 8px;
+        }
+    </style>
+
+    <script type="text/javascript">
+
+
+         //function EmailValidation() {
+         //    var chkEmailFormat = false;
+         //    var sEmail = $("[id$=txtEmailId]").val();
+         //    if (sEmail.trim() != "") {
+         //        if (validateEmail(sEmail)) {
+         //            $("[id$=_lblAlertEmail]").text("");
+         //            chkEmailFormat = true;
+         //        } else
+         //            $("[id$=_lblAlertEmail]").text("Enter valid email id");
+
+         //        return chkEmailFormat;
+         //    }
+         //    return true;
+         //    $("[id$=_lblAlertEmail]").text("");
+         //}
+    </script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $("[id$=btnsubmit]").click(function () {
+
+                var category = $("[id*='ddlcategory'] :selected").text();
+                //var cost = $("[id*='ddlCost'] :selected").text();
+                var empid = $("[id$=txtEmpId]").val();
+                var firstName = $("[id$=txtFirstName]").val();
+                var lastname = $("[id$=txtLastName]").val();
+
+                var emailid = $("[id$=txtEmailId]").val();
+                var phone = $("[id$=txtPhone]").val();
+                var Dob = $("[id$=txtDOB]").val();
+
+                var gender = $("[id*='ddlgender'] :selected").text();
+                var blodGrp = $("[id*='ddlBloodGrp'] :selected").text();
+                var tshirtSize = $("[id*='ddlShirtsize'] :selected").text();
+
+                var EmergencyName = $("[id$=txtEmergencyName]").val();
+                var EmergencyNum = $("[id$=txtEmergencyNum]").val();
+                var EmergencyRelation = $("[id$=txtEmergencyRelation]").val();
+
+                var idproof = $("[id*='ddlidentityProof'] :selected").text();
+                ///
+                var IdProof = $("[id$=txtIdProof]").val();
+                var bibName = $("[id$=txtBibName]").val();
+
+                if (empid == "" || firstName == "" || lastname == "" || emailid == "" || phone == "" || Dob == "" || EmergencyName == "" || EmergencyNum == "" || EmergencyRelation == "" || IdProof == "" || bibName == "" || category == "Select" || cost == "Select" || gender == "Select" || blodGrp == "Select" || tshirtSize == "Select" || idproof == "Select") {
+                    alert('Please enter * feilds');
+                    return false;
+                }
+
+            });
+
+            $("[id$=txtEmailId]").change(function () {
+                debugger;
+                var chkEmailFormat = false;
+                var sEmail = $("[id$=txtEmailId]").val();
+                if (sEmail.trim() != "") {
+                    if (validateEmail(sEmail)) {
+                        $("[id$=_lblAlertEmail]").text("");
+                        chkEmailFormat = true;
+                    }
+                    else {
+                        alert('Please enter a valid email id.')
+                        $("[id$=txtEmailId]").val("");
+                    }
+
+                    return chkEmailFormat;
+                }
+                return true;
+                $("[id$=_lblAlertEmail]").text("");
+
+            });
+
+            $('[id*="txtPhone"]').keypress(function (evt) {
+
+                var self = $(this);
+                self.val(self.val().replace(/[^\d].+/, ""));
+                if ((evt.which < 48 || evt.which > 57)) {
+                    evt.preventDefault();
+                }
+
+            });
+
+            $('[id*="txtEmergencyNum"]').keypress(function (evt) {
+
+                var self = $(this);
+                self.val(self.val().replace(/[^\d].+/, ""));
+                if ((evt.which < 48 || evt.which > 57)) {
+                    evt.preventDefault();
+                }
+
+            });
+
+            function validateEmail(sEmail) {
+                var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+                if (filter.test(sEmail)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
+    </script>
+</head>
+<body cz-shortcut-listen="true">
+
+    <div class="aspNetHidden">
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTA0MzQ1OTI5MWRkZ38aehFoqSVuWgFFWwMrchpQQlMRrfPYiGzmgiHt/e4=" />
+    </div>
+
+    <script type="text/javascript">
+
+
+        //<![CDATA[
+        var theForm = document.forms['ctl01'];
+        if (!theForm) {
+            theForm = document.ctl01;
+        }
+        function __doPostBack(eventTarget, eventArgument) {
+            if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                theForm.__EVENTTARGET.value = eventTarget;
+                theForm.__EVENTARGUMENT.value = eventArgument;
+                theForm.submit();
+            }
+        }
+        //]]>
+    </script>
+
+
+    <script src="./Employee Wellbeing Survey_files/WebResource.axd" type="text/javascript"></script>
+
+
+    <script src="./Employee Wellbeing Survey_files/ScriptResource.axd" type="text/javascript"></script>
+    <script src="./Employee Wellbeing Survey_files/ScriptResource(1).axd" type="text/javascript"></script>
+    <div class="aspNetHidden">
+
+        <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="E392EC91" />
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdACQd9f4CRi3vf83qWBENZ/qDYj9/sBEaoLo5L7L7lZTD/K35mtgl4pmVdiKJf5hQve3dOtg8Pvlj/+DKBlrNulm3ZDQZ5Iu4T42gDg2wpL3PUZT6k6X7qzbrY60PFTHM/VmpkVQQQ/Om3HjlM5BYZL223fEMWU+lizJFTCc3+oyPdPeBH1gnk0++04zRXmo134KsXV1FiWi8z834f1lwiw8IAcjnWfF5N7vyZY5bnHGSRMkPjzytzp+rjAe29HgE3gIhmyWZEmiXzfLvn+kc3wfMXpqa0+xZagRVKSHDVgnnvW2Lvz5brFPNFa/w7TOKV+rTTmSBCA/s+j8tRxf83HbD1QuNx3Nez0381mk6qtB5+QYmxOgSbNlET0NuMiKohuc5hlwAh1VCwcRh2f+oPQBjOKZNvabolexVmX5hXq2vpjRWBdryNYFm2hQlXHzVdA1nacDIkwxLhok706dmfIECcFnmRvKBQZYd4upHQtHwc1Y2hsudGe6I3us+C4y2RJ8qj0UG0qj2H5/oBKXOsDHIOgPbEGCx8DJVuI4OUWpqf4CaN5Dx52XDXxb+qoxhB+GBPh33sa+Ni4rswIPNto/uEjVYJ05yLnknpJGwMIc/7ndTnQKphCP0ZrIOgWIrtyKJQTny1jcRFTmN5N8kiMwi0TzpwoV2DuElGkcQjbw/XiaHaWD7tjOF46nA3JMPttY/PQWjEKBCiX1/foOOC5isPOaW1pQztoQA36D1w/+bXb8N2LnyL92xDpoudgkhQGZG5SGqzTH0rntiD52O+YOTNgVjN9flRKiJ1UFTavjS3Q==" />
+    </div>
+    <script type="text/javascript">
+        //<![CDATA[
+        Sys.WebForms.PageRequestManager._initialize('Srp', 'ctl01', ['tUpdEAP', 'UpdEAP'], [], [], 90, '');
+        //]]>
+    </script>
+    <form method="post" action="./" id="form1">
+        <div class="aspNetHidden">
+            <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+            <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+            <input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTAwNzE2MTIxMw9kFgICAw9kFgICAQ9kFgICAQ8QZGQWAWZkZNFNzzcrf1LM6RkcfHp5nv6WAuOFZpNSF4BM7hoX8Ysa" />
+        </div>
+
+        <script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+        </script>
+
+
+        <div class="aspNetHidden">
+
+            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="5D5DDA4E" />
+            <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdACkelpph4rmNTLBY0R5VVWd+xtNMeOC00n12dzqTcuQ0eLf2JFb9eHv3RD9LXhIzyhRSBiZBchtJ1HE5eyHpwa6RX0GdoiRGjd1q5ELqCWbAAgbUJ238eKwTy0LpUhdONLhM2vz4PH8f7Z818+HGDJ7H61kF2JGifl3WoTTeijlO88Pqgszb0BygkMJfPmMzihP57krzdrowy1YqiaDEjlkHHbku3xW7gNlIcAIDo1mNe5RUveBtNVmWSDZjN87LtSx9ea4ESNN7Za2gFyzTiGK0PFtHlIoq6IKU3bImTFftdF5NRsnpyosn1OX3viSv3RZ2WB8f94rMIyGGdyWPcAy/GgJEk9eH/29/mTpXkQt9S7Ee+DImTSTjxSWGvPRD85c4L5fjwdA4qST/npOP8Ppm453uCXA/g/1uYz7eg8vft37wpsFI0ICDaEB/ywqKRQM4z8plSAnZZ3bRy2ZRZDOhysOzM6dHn6vAwEwo7XHMheiExBFoSxo8yL4EKG0VrpvWghXxp/0IUD9m6FYj/ZguV3KkPVSCpwegRYo4xQYBvsMiqI2yNEr4wab91EjAIbsCcqGvpH3icYiwMMSwNvSm+Pwyy/w32JOFU1gWYwH0nUadJXvMemf2BfCwqwhTu6XLhMuS7sFlojIU/3LjhbOEUXvH3OqYFqnf0UwEKcnF8E6tN/0Nmg/cuFVIcOPyhrK+KDyzCifT+PMry2rdbTX8q4916/+SSQIOOdyRGeF4F6A9N54jWhR4zaK0aFcSpqtP1R9Qi9fuhkCNS0WEMakPm6rUdDOwMWlDAFt1Zepa6GDJeLjxbPyZPLKNDciorpAfeetr3c4H3XmikgJc2ZlIvw3YufIv3bEOmi52CSFAZvZ5JM4xoGKlEK5yWYk4F2bi0FMONXHVbkdZsJRo3eTj" />
+        </div>
+        <div>
+
+            <div class="container">
+                <header class="main-header">
+                    <!-- Logo -->
+                    <!-- Header Navbar: style can be found in header.less -->
+                    <nav class="navbar navbar-static-top mrgn0 logo_background" role="navigation">
+                        <!-- Sidebar toggle button-->
+                        <div class="navbar-custom-menu pull-left mrgn0">
+
+                            <img src="Images/logo2.png" />
+                        </div>
+                    </nav>
+                </header>
+
+
+                <div>
+                    <div>
+                        <h1 class="mainheader">10k & 5k Registrations</h1>
+                    </div>
+                </div>
+
+                <center>
+                    <img src="Images/10k.jpg" />
+                </center>
+                <div class="border_styles">
+                    <div class="form-coloum-two" style="width: 600px;">
+                        <div>
+                            <b style="color:#f00;">NOTE:Their would be 50% discount in the marathon fee. 5K @@ INR 250 and 10k @@ INR 375.</b>
+                        </div>
+
+
+                    </div><div class="cear"></div>
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Categeory:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+                            <select name="ddlcategory" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ddlcategory\&#39;,\&#39;\&#39;)&#39;, 0)" id="ddlcategory" style="width: 100px;">
+                                <option selected="selected" value="0">Select</option>
+                                <option value="1">10K</option>
+                                <option value="2">5K</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Emp ID:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+                            <input name="txtEmpId" type="text" id="txtEmpId" class="text-Field" />
+                        </div>
+                    </div><div class="clear"></div>
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            First Name:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+                            <input name="txtFirstName" type="text" id="txtFirstName" class="text-Field" />
+                        </div>
+                    </div>
+
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Last Name:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+
+                            <input name="txtLastName" type="text" id="txtLastName" class="text-Field" />
+                        </div>
+                    </div><div class="clear"></div>
+
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Email:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+
+                            <input name="txtEmailId" type="text" id="txtEmailId" class="text-Field" />
+                            <span id="lblAlertEmail" style="color:Red;"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Phone:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+
+                            <input name="txtPhone" type="text" maxlength="10" id="txtPhone" class="text-Field" />
+                        </div>
+                    </div><div class="clear"></div>
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label" style="color: #000; float: left; font-size: 12px; padding: 2px; width: 185px;">
+                            Date of Birth(DD/MM/YYYY):
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+
+                            <input name="txtDOB" type="text" id="txtDOB" class="text-Field" />
+                            <
+                        </div>
+                    </div>
+
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Gender:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+                            <select name="ddlgender" id="ddlgender">
+                                <option selected="selected" value="0">Select</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+
+                            </select>
+                        </div>
+                    </div> <div class="clear"></div>
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Blood Group:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+                            <select name="ddlBloodGrp" id="ddlBloodGrp">
+                                <option selected="selected" value="0">Select</option>
+                                <option value="1">A+</option>
+                                <option value="2">A-</option>
+                                <option value="3">B+</option>
+                                <option value="4">B-</option>
+                                <option value="5">O+</option>
+                                <option value="6">O-</option>
+                                <option value="7">AB+</option>
+                                <option value="8">AB-</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            T shirt Size:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+                            <select name="ddlShirtsize" id="ddlShirtsize">
+                                <option selected="selected" value="0">Select</option>
+                                <option value="1">Small</option>
+                                <option value="2">Medium</option>
+                                <option value="3">Large </option>
+                                <option value="4">Large XL</option>
+                                <option value="5">Large XXl</option>
+
+                            </select>
+                        </div>
+                    </div> <div class="clear"></div>
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Emergency Contact Name:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+                            <input name="txtEmergencyName" type="text" id="txtEmergencyName" class="text-Field" />
+                        </div>
+                    </div>
+
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Emergency contact No:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+                            <input name="txtEmergencyNum" type="text" id="txtEmergencyNum" class="text-Field" />
+                        </div>
+                    </div> <div class="clear"></div>
+                    <!-- <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Emergency Contact Name:
+                        </div>
+                        <div class="input-field" style="float: left;width: 250px;">
+                             <input name="Emergency_contact_name" type="text" value="" id="Emergency_contact_name"  class="text-Field">
+                        </div>
+                    </div> -->
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Emergency contact Relationship:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+                            <input name="txtEmergencyRelation" type="text" id="txtEmergencyRelation" class="text-Field" />
+                        </div>
+                    </div>
+
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Identity proof:
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+                            <select name="ddlidentityProof" id="ddlidentityProof">
+                                <option selected="selected" value="0">Select</option>
+                                <option value="1">passport</option>
+                                <option value="2">Voter ID</option>
+                                <option value="3">Driving Licence</option>
+                                <option value="4">Ration Card</option>
+
+                            </select>
+                        </div>
+                    </div><div class="clear"></div>
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            ID proof Number
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+                            <input name="txtIdProof" type="text" id="txtIdProof" />
+                        </div>
+                    </div>
+
+                    <div class="form-coloum-two" style="width: 450px;">
+                        <div class="label">
+                            Name on the BIB (Shirt)
+                        </div>
+                        <div class="input-field" style="float: left; width: 250px;">
+                            <input name="txtBibName" type="text" id="txtBibName" />
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+
+                    <div class=" mrgnT10">
+
+                        <div style="float: right;">
+
+                            <input type="submit" name="btnsubmit" value="submit" id="btnsubmit" class="btn_changes" />
+
+                            <input type="submit" name="btnReset" value="Reset" id="btnReset" class="btn_changes" />
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                </div>
+                <div id="footer">
+
+                    <div class="footwrp">
+                        <div id="footer-end">
+                            Powered by <a href="http://www.valuelabs.com" title="ValueLabs">ValueLabs</a>
+                        </div>
+                        <div id="footercontact">
+                            <span>Contact information:</span> ValueLabs,41 Hitech City. Madhapur-Hyd 500081. Telephone: +040 66239000
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        Sys.Application.add_init(function () {
+            $create(Sys.UI._UpdateProgress, { "associatedUpdatePanelId": null, "displayAfter": 500, "dynamicLayout": true }, null, null, $get("updateProgress"));
+        });
+        //]]>
+    </script>
+
+
+
+
+    <div id="window-resizer-tooltip" style="display: none;">
+        <a href="http://survey.valuelabs.com/#" title="Edit settings"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth">1920</span> x <span class="tooltipHeight" id="winHeight">1040</span><br>
+        <span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth">1920</span> x <span class="tooltipHeight" id="vpHeight">925</span>
+    </div>
+</body>
+</html>
